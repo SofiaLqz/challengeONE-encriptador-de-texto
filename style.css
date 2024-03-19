@@ -1,0 +1,244 @@
+body{
+    background: url(imagenes/fondo.png) center no-repeat; /*La imagen de fondo no se repite en ninguna dirección*/
+    background-size: cover; /* La imagen de fondo se ajusta para cubrir todo el área del body*/
+    width: 100%;
+    min-height: 100%;/* Ajusta la altura minima del body al 100% de la altura de la ventana del navegador */
+}
+header {
+    padding: 20px;
+}
+main {
+    display:flex; /* Convierte el main en un contenedor flex */
+}
+.alerta{
+    width: 30%;
+    text-align: center;
+    margin: 0% 35% 2% 35%;
+    font-family: "Inter", sans-serif;
+    background-color:  #5F759D;
+    box-sizing: border-box;  /* Incluye el relleno y el borde en el ancho total del elemento*/
+    border: 1px solid #5F759D;
+    border-radius: 10px;
+    display: none;
+}
+.alerta p {
+    font-weight: bold;
+    margin: 10px;
+    color: white;
+}
+.input-section {
+    width: 55%;
+    box-sizing: border-box; 
+    margin-left: 8%;
+    margin-right: 5%;
+    margin-bottom: 50px;
+    background-color: #FFF7E1; 
+    border-radius: 20px;
+    box-shadow: 0px 10px 20px 0px #000000;
+}
+textarea {
+    padding: 10px;
+    width: calc(100% - 40px);
+    background-color: #FFF7E1; 
+    box-sizing: border-box;
+    border: none;
+    margin: 20px 20px 100px 20px;
+    font-family: "Nanum Pen Script", cursive;
+    font-weight: 400;
+    font-size: 30px;
+    resize: none; /* Desactiva la capacidad de redimensionar el textarea */
+}
+textarea:focus {
+    outline: none;
+}
+.text-warning {
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    margin: 10px 30px 20px 30px;
+}
+.text-warning p::before {
+    content: '\0021';
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #696969;
+    text-align: center;
+    color: white;
+    font-size: 15px;
+    margin-right: 5px;
+}
+.div-buttons {
+    display: flex;
+    margin: 0 30px 30px 30px;
+}
+.btn-encrypt {
+    font-family: "Inter", sans-serif;
+    padding: 10px;
+    width: 48%;
+    height: 50px;
+    margin-right: 2%;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 20px;
+    background-color: rgb(144, 0, 0);
+    border: 1px solid rgb(144, 0, 0);
+    color:white
+}
+.btn-decrypt{
+    font-family: "Inter", sans-serif;
+    padding: 10px;
+    width: 48%;
+    height: 50px;
+    margin-left: 2%;
+    box-sizing: border-box;
+    border-radius: 20px;
+    background-color: #FFF7E1;
+    border: 1px solid rgb(144, 0, 0);
+}
+.output-section {
+    width: 30%;
+    box-sizing: border-box;
+    margin-right: 2%;
+    margin-bottom: 50px;
+    background-color: #FFF7E1; 
+    border-radius: 20px;
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+    flex-direction: column; /* Cambia la dirección principal a columna */
+    box-shadow: 0px 10px 20px 0px #000000;
+}
+.div-output-section {
+    width: 100%;
+    font-family: "Inter", sans-serif;
+    text-align: center;
+}
+.img-output-section {
+    width: 80%;
+    margin: 5% 10%;
+}
+.title-information {
+    font-size: 24px;
+    margin: 0% 10% 2% 10%;
+    font-weight: bold;
+    color: rgb(144, 0, 0);
+}
+.text-information {
+    margin: 0 10%;
+}
+.output-text { 
+    display: none;
+}
+.div-button-copy {
+    display: none;
+    margin: 30px;
+    width: calc(100% - 60px);
+}
+.btn-copy {
+    font-family: "Inter", sans-serif;
+    padding: 10px;
+    width: 99%;
+    height: 50px;
+    margin-left: 1%;
+    box-sizing: border-box;
+    border-radius: 20px;
+    background-color: #FFF7E1;
+    border: 1px solid rgb(144, 0, 0);
+}
+footer{
+    padding:  10px;
+    text-align: center;
+}
+.copyright {
+    margin: 2%;
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+}
+/* Estilos específicos para celulares */
+@media screen and (max-width: 600px) {
+    main {
+        flex-direction: column; /* Cambia la dirección principal a columna */
+    }
+    .alerta {
+        width: 50%;
+        margin: 0% 25% 2% 25%;
+    }
+    .input-section {
+        width: 94%;
+        margin: 10% 3% 5% 3%;
+    }
+    .input-text{
+        font-size: 24px;
+    }
+    .text-warning {
+        font-size: 10px;
+    }
+    .text-warning p::before {
+        width: 12px;
+        height: 12px;
+        font-size: 12px;
+    }
+    .div-buttons {
+        flex-wrap: wrap; /* Permite que los elementos se envuelvan en múltiples líneas */
+    }
+    .btn-encrypt {
+        width: 98%;
+        margin: 0 0 10px 0;
+    }
+    .btn-decrypt {
+        width: 98%;
+        margin: 10px 0 0px 0;
+    }
+    .output-section {
+        width: 94%;
+        margin: 0% 3% 10% 3%;
+    }
+    .output-text{
+        font-size: 24px;
+        margin-bottom: 20px;
+        max-height: 250px; 
+    }
+    .div-output-section {
+        margin: 20px 0px;
+    }
+    .img-output-section {
+        display: none;
+    } 
+}
+/* Estilos para tablets */
+@media screen and (min-width: 600px) and (max-width: 940px) {
+    main {
+        flex-direction: column; /* Cambia la dirección principal a columna */
+    }
+    .input-section {
+        width: 94%;
+        margin: 10% 3% 5% 3%;
+    }
+    .input-text{
+        font-size: 24px;
+    }
+    .text-warning {
+        font-size: 10px;
+    }
+    .text-warning p::before {
+        width: 12px;
+        height: 12px;
+        font-size: 12px;
+    }
+    .output-section {
+        width: 94%;
+        margin: 0% 3% 10% 3%;
+    }
+    .output-text{
+        font-size: 24px;
+        margin-bottom: 20px;
+        max-height: 250px; 
+    }
+    .div-output-section {
+        margin: 20px 0px;
+    }
+    .img-output-section {
+        display: none;
+    }  
+}
