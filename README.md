@@ -4,5 +4,5 @@ Esta aplicación encripta textos para generar mensajes secretos que puedes inter
 
 ## ✅ Funcionamiento ❌
 
-El encriptador de texto funciona exclusivamente con letras minúsculas y no admite el uso de tildes ni caracteres especiales.
+El encriptador/desencriptador funciona exclusivamente con letras minúsculas y no admite el uso de tildes ni caracteres especiales.
 
