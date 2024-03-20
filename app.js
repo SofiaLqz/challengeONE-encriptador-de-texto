@@ -4,7 +4,7 @@ let textoEntrada = document.querySelector('.input-text');
 let textoSalida = document.querySelector('.output-text');
 //Función para validar el texto
 function validarTexto(texto) {
-    var expresionRegular = /[^a-z0-9 ]/;  //La expresión coincide con cualquier caracter que no sea una letra minúscula o un número.
+    var expresionRegular = /[^a-z0-9 ]/;  //La expresión coincide con cualquier caracter que no sea una letra minúscula, un número o un espacio
     //Devuelve la longitud del mensaje después de eliminar los espacios en blanco
     if (texto.trim().length === 0) {
         //El mensaje está vacío
@@ -15,7 +15,7 @@ function validarTexto(texto) {
         //El mensaje no está vacío
         if (expresionRegular.test(texto) === true){
             swal("Su mensaje contiene mayúsculas, caracteres especiales y/o tildes", "Por favor, borrarlos para continuar.", "warning");
-            return false; // El mensaje no está vacío y no se ajusta a las restricciones
+            return false; //El mensaje no está vacío y no se ajusta a las restricciones
         }
         else {
             return true;
@@ -36,7 +36,7 @@ function encriptar(){
     let textoEntrada = document.querySelector('.input-text').value;
     //Se valida el texto
     let validacion = validarTexto(textoEntrada) 
-    // Si no hay caracteres especiales y el mensaje no está vacío
+    //Si no hay caracteres especiales y el mensaje no está vacío
     if (validacion === true){    
         //Recorrer el texto 
         for (let i = 0; i < textoEntrada.length; i++){
@@ -61,7 +61,8 @@ function encriptar(){
         let botonCopiar = document.querySelector('.div-button-copy');
         botonCopiar.style.display = 'block'
         //Mostrar el texto encriptado en el <textarea> de salida
-        textoSalida.value = textoEncriptado;}
+        textoSalida.value = textoEncriptado;
+    }
 };
 //Función para desencriptar el texto
 function desencriptar(){
@@ -95,4 +96,16 @@ function copiarTextoPortapapeles() {
         console.error('Error al copiar el texto: ', err);
         alert("No se pudo copiar el texto al portapapeles.");
       });
+}
+//Función para borrar el texto de entrada y reiniciar el <section> de salida
+function borrarTexto(){
+    document.querySelector('.input-text').value = '';
+    //Ocultar <textarea> de salida
+    textoSalida.style.display = 'none';
+    //Ocultar el botón de copiar
+    let botonCopiar = document.querySelector('.div-button-copy');
+    botonCopiar.style.display = 'none'
+    //Mostrar el div-output-section 
+    let divOutput = document.querySelector('.div-output-section');
+    divOutput.style.display = 'block';
 }
