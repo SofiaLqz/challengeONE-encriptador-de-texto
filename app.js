@@ -2,6 +2,26 @@
 let textoEntrada = document.querySelector('.input-text');
 //<textarea> de salida
 let textoSalida = document.querySelector('.output-text');
+//Función para validar el texto
+function validarTexto(texto) {
+    var expresionRegular = /[^a-z0-9 ]/;  //La expresión coincide con cualquier caracter que no sea una letra minúscula o un número.
+    //Devuelve la longitud del mensaje después de eliminar los espacios en blanco
+    if (texto.trim().length === 0) {
+        //El mensaje está vacío
+        swal("Mensaje vacío", "Por favor ingresa un mensaje para continuar.", "error");
+        return false;
+    } 
+    else {
+        //El mensaje no está vacío
+        if (expresionRegular.test(texto) === true){
+            swal("Su mensaje contiene mayúsculas, caracteres especiales y/o tildes", "Por favor, borrarlos para continuar.", "warning");
+            return false; // El mensaje no está vacío y no se ajusta a las restricciones
+        }
+        else {
+            return true;
+        }
+    }
+}
 //Función para encriptar el texto
 function encriptar(){
     let textoEncriptado = ""
@@ -14,30 +34,34 @@ function encriptar(){
     let clavesEncriptacion = ["ai","enter","imes","ober","ufat"];
     //Capturar el texto ingresado por el usuario en el <textarea> de entrada
     let textoEntrada = document.querySelector('.input-text').value;
-    //Recorrer el texto 
-    for (let i = 0; i < textoEntrada.length; i++){
-        //Si la letra coincide con alguna de la lista "letras"
-        if (letras.includes(textoEntrada[i])){
-            //Se obtiene el indice de esa letra en la lista
-            let indiceClave = letras.indexOf(textoEntrada[i]);
-            //Se contruye el texto encriptado usando la clave equivalente a esa letra
-            textoEncriptado+=clavesEncriptacion[indiceClave];
-        } 
-        else{
-            //Si la letra no está en la lista, solo se agrega al texto encriptar
-            textoEncriptado+=textoEntrada[i];
+    //Se valida el texto
+    let validacion = validarTexto(textoEntrada) 
+    // Si no hay caracteres especiales y el mensaje no está vacío
+    if (validacion === true){    
+        //Recorrer el texto 
+        for (let i = 0; i < textoEntrada.length; i++){
+            //Si la letra coincide con alguna de la lista "letras"
+            if (letras.includes(textoEntrada[i])){
+                //Se obtiene el indice de esa letra en la lista
+                let indiceClave = letras.indexOf(textoEntrada[i]);
+                //Se contruye el texto encriptado usando la clave equivalente a esa letra
+                textoEncriptado+=clavesEncriptacion[indiceClave];
+            } 
+            else{
+                //Si la letra no está en la lista, solo se agrega al texto encriptar
+                textoEncriptado+=textoEntrada[i];
+            }
         }
-    }
-    //Desaparece el div-output-section 
-    let divOutput = document.querySelector('.div-output-section');
-    divOutput.style.display = 'none';
-    //Mostrar <textarea> de salida
-    textoSalida.style.display = 'block';
-    //Mostrar el botón de copiar
-    let botonCopiar = document.querySelector('.div-button-copy');
-    botonCopiar.style.display = 'block'
-    //Mostrar el texto encriptado en el <textarea> de salida
-    textoSalida.value = textoEncriptado;
+        //Desaparece el div-output-section 
+        let divOutput = document.querySelector('.div-output-section');
+        divOutput.style.display = 'none';
+        //Mostrar <textarea> de salida
+        textoSalida.style.display = 'block';
+        //Mostrar el botón de copiar
+        let botonCopiar = document.querySelector('.div-button-copy');
+        botonCopiar.style.display = 'block'
+        //Mostrar el texto encriptado en el <textarea> de salida
+        textoSalida.value = textoEncriptado;}
 };
 //Función para desencriptar el texto
 function desencriptar(){
